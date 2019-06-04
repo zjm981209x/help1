@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-
     /**
      * 用户id
      */
@@ -26,4 +25,12 @@ public class User {
      * 用户密码
      */
     private String userPw;
+    /**
+     * 昵称
+     */
+    private String nickName;
+    private String phone;
+    private String image;
+    private String email;
+
 }
