@@ -29,7 +29,7 @@ public class JwtFilter extends GenericFilterBean {
             Claims claims = Jwts.parser().setSigningKey("myjwtsecret")
                     .parseClaimsJws(token)
                     .getBody();
-            req.setAttribute("claims",claims);
+            req.setAttribute("username",claims.get("username"));
             filterChain.doFilter(req,res);
         }
     }

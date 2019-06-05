@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.help.dao.ExpressDao">
+    <insert id="insert" keyProperty="expressId" useGeneratedKeys="true">
+        insert into express(address,pay,phone,time,content) values (#{address},
+        #{pay},#{phone},#{time},#{content})
+    </insert>
+    
+    <select id="selectAll" resultType="express">
+        select * from express
+    </select>
+
+    <select id="selectById" resultType="express">
+        select * from express where express_id = #{id}
+    </select>
+    
+    <delete id="deleteById">
+        delete from express where express_id = #{id}
+    </delete>
+</mapper> 

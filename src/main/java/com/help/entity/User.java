@@ -29,7 +29,7 @@ public class User {
      * 昵称
      */
     private String nickName;
-    private String phone;
+    private String phone = "";
     private String image;
     private String email;
 

@@ -4,10 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.help.dao.UserDao">
     <insert id="insert" keyProperty="userId" useGeneratedKeys="true">
-        insert into user(user_name,user_pw) values (#{userName},#{userPw})
+        insert into user(user_name,user_pw,nick_name,phone,email,image) values (#{userName},#{userPw},
+        #{nickName},#{phone},#{email},#{image})
     </insert>
     
     <select id="selectByName" resultType="user">
         select * from user where user_name = #{name}
     </select>
+
+    <update id="update">
+      update user set nick_name = #{nickName}, phone = #{phone}, email = #{email},
+      image = #{image} where user_id = #{userId}
+    </update>
 </mapper> 

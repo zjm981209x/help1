@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.help.dao.TradeDao">
+    <insert id="insert" keyProperty="tradeId" useGeneratedKeys="true">
+        insert into trade(title,content,old_price,new_price,image) values(#{title},
+        #{content},#{oldPrice},#{newPrice},#{image})
+    </insert>
+    
+    <select id="selectAll" resultType="trade">
+        select * from trade
+    </select>
+
+    <select id="selectById" resultType="trade">
+        select * from trade where trade_id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from trade where trade_id = #{id}
+    </delete>
+</mapper> 
