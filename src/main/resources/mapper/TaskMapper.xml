@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.help.dao.TaskDao">
+    <insert id="insert" keyProperty="taskId" useGeneratedKeys="true">
+        insert into task(type,pub_user,sub_user,type_id,status,time) values (#{type},
+        #{pubUser},#{subUser},#{typeId},#{status},#{time})
+    </insert>
+
+    <select id="selectAll" resultType="task">
+        select * from task
+    </select>
+    
+    <delete id="delete">
+        delete from task where task_id = #{id}
+    </delete>
+    
+    <update id="updateById">
+        update task set sub_user = #{name}, status = 1 where task_id = #{id}
+    </update>
+</mapper> 
