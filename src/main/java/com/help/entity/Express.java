@@ -14,6 +14,6 @@ public class Express {
     private String address;
     private double pay;
     private String phone;
-    private String description;
+    private String content;
     private Timestamp time;
 }

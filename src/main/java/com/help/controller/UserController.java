@@ -1,6 +1,7 @@
 package com.help.controller;
 
 import com.help.entity.User;
+import com.help.service.Impl.MailService;
 import com.help.service.UserService;
 import com.help.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/user")
@@ -20,6 +23,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MailService mailService;
 
     @PutMapping("/")
     public String update(User user,
@@ -37,6 +43,18 @@ public class UserController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        if(!user.getEmail().isEmpty()){
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    String to = user.getEmail();
+                    String subject = "message";
+                    String content = "您已成功将邮箱绑定到西邮帮帮帮！";
+                    mailService.send(to,subject,content);
+                }
+            });
         }
         return userService.update(user) == 1 ? "success" : "error";
     }

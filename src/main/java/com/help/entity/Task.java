@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,4 +35,5 @@ public class Task {
      * default(-1)  0未接受   1已接受
      */
     private int status;
+    private Timestamp time;
 }

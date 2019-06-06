@@ -14,6 +14,10 @@ public class HelpApplication {
         FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.setFilter(new JwtFilter());
         bean.addUrlPatterns("/user/*");
+        bean.addUrlPatterns("/food/*");
+        bean.addUrlPatterns("/trade/*");
+        bean.addUrlPatterns("/express/*");
+        bean.addUrlPatterns("/task/*");
         return bean;
     }
 
