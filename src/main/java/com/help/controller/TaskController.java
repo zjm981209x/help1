@@ -70,8 +70,16 @@ public class TaskController {
         return getResult(list);
     }
 
-
-
+    /**
+     * 任务下架
+     *
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        return taskService.delete(id) == 1 ? "success" : "error";
+    }
 
 
 

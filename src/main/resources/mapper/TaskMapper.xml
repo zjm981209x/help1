@@ -12,9 +12,9 @@
         select * from task
     </select>
     
-    <delete id="delete">
-        delete from task where task_id = #{id}
-    </delete>
+    <update id="delete">
+        update task set status = 2 where task_id = #{id}
+    </update>
     
     <update id="updateById">
         update task set sub_user = #{name}, status = 1 where task_id = #{id}
