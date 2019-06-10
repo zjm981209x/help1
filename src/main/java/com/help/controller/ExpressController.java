@@ -5,13 +5,11 @@ import com.help.entity.Task;
 import com.help.service.ExpressService;
 import com.help.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
+import java.util.List;
 
 @RestController
 @RequestMapping("/express")
@@ -37,4 +35,18 @@ public class ExpressController {
         return taskService.insert(task) != null ? "success" : "error";
     }
 
+    @GetMapping("/{id}")
+    public Express selectById(@PathVariable int id){
+        return expressService.selectById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable int id){
+        return expressService.deleteById(id) == 1 ? "success" : "error";
+    }
+
+    @GetMapping("/")
+    public List<Express> selectAll(){
+        return expressService.selectAll();
+    }
 }

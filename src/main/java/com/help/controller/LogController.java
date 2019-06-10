@@ -14,6 +14,12 @@ public class LogController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 用户注册
+     * @param username
+     * @param password
+     * @return
+     */
     @RequestMapping("/register")
     public String register(String username, String password){
         User user = userService.selectByName(username);
@@ -23,10 +29,20 @@ public class LogController {
             User tmp = new User();
             tmp.setUserName(username);
             tmp.setUserPw(password);
+            tmp.setPhone("");
+            tmp.setNickName("");
+            tmp.setEmail("");
+            tmp.setImage("");
             return userService.insert(tmp) != null ? "success" : "error";
         }
     }
 
+    /**
+     * 用户登录
+     * @param username
+     * @param password
+     * @return
+     */
     @RequestMapping("/login")
     public String login(String username, String password){
         User user = userService.selectByName(username);
@@ -42,6 +58,4 @@ public class LogController {
             return "error";
         }
     }
-
-
 }

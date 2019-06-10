@@ -27,7 +27,7 @@ public class Task {
      */
     private String subUser;
     /**
-     * 任务id
+     * 具体类型任务id
      */
     private int typeId;
     /**
@@ -35,5 +35,8 @@ public class Task {
      * default(-1)  0未接受   1已接受
      */
     private int status;
+    /**
+     * 任务发布时间
+     */
     private Timestamp time;
 }

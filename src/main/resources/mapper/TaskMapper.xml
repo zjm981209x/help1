@@ -19,4 +19,12 @@
     <update id="updateById">
         update task set sub_user = #{name}, status = 1 where task_id = #{id}
     </update>
+    
+    <select id="selectByStatus" resultType="task">
+        select * from task where status = 0
+    </select>
+    
+    <select id="selectByName" resultType="task">
+        select * from task where pub_user = #{name} or sub_user = #{name}
+    </select>
 </mapper> 

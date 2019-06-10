@@ -9,9 +9,11 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface TaskDao  {
+public interface TaskDao {
     int insert(Task task);
     List<Task> selectAll();
+    List<Task> selectByStatus();
+    List<Task> selectByName(String name);
     int delete(int id);
     int updateById(@Param("id") int id, @Param("name") String name);
 }

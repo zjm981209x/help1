@@ -6,10 +6,7 @@ import com.help.service.UserService;
 import com.help.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +24,14 @@ public class UserController {
     @Autowired
     private MailService mailService;
 
+    /**
+     * 完善个人信息
+     *
+     * @param user
+     * @param file
+     * @param request
+     * @return
+     */
     @PutMapping("/")
     public String update(User user,
                          @RequestParam("file") MultipartFile file,
@@ -46,16 +51,27 @@ public class UserController {
         }
         if(!user.getEmail().isEmpty()){
             ExecutorService executor = Executors.newSingleThreadExecutor();
-            executor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    String to = user.getEmail();
-                    String subject = "message";
-                    String content = "您已成功将邮箱绑定到西邮帮帮帮！";
-                    mailService.send(to,subject,content);
-                }
+            executor.execute(() -> {
+                String to = user.getEmail();
+                String subject = "message";
+                String content = "您已成功将邮箱绑定到西邮帮帮帮！";
+                mailService.send(to,subject,content);
             });
         }
         return userService.update(user) == 1 ? "success" : "error";
+    }
+
+    /**
+     * 查询当前用户个人信息
+     *
+     * @param request
+     * @return
+     */
+    @GetMapping("/")
+    public User selectByName(HttpServletRequest request){
+        String name = (String) request.getAttribute("username");
+        User user = userService.selectByName(name);
+        user.setUserPw("");
+        return user;
     }
 }

@@ -26,6 +26,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> selectByName(String name) {
+        return taskDao.selectByName(name);
+    }
+
+    @Override
     public int delete(int id) {
         return taskDao.delete(id);
     }
@@ -33,5 +38,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public int updateById(int id, String name) {
         return taskDao.updateById(id,name);
+    }
+
+    @Override
+    public List<Task> selectByStatus() {
+        return taskDao.selectByStatus();
     }
 }

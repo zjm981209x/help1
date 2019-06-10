@@ -16,6 +16,7 @@ public class MailService {
     private JavaMailSender sender;
 
     /**
+     * 发送简单文字邮件
      *
      * @param to
      * @param subject

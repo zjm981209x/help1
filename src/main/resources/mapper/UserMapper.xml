@@ -7,7 +7,7 @@
         insert into user(user_name,user_pw,nick_name,phone,email,image) values (#{userName},#{userPw},
         #{nickName},#{phone},#{email},#{image})
     </insert>
-    
+
     <select id="selectByName" resultType="user">
         select * from user where user_name = #{name}
     </select>
