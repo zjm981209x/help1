@@ -13,4 +13,5 @@ public interface FoodDao {
     List<Food> selectAll();
     Food selectById(int id);
     int deleteById(int id);
+
 }
