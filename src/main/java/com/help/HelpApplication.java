@@ -18,6 +18,7 @@ public class HelpApplication {
         bean.addUrlPatterns("/trade/*");
         bean.addUrlPatterns("/express/*");
         bean.addUrlPatterns("/task/*");
+        bean.addUrlPatterns("/comment/*");
         return bean;
     }
 
