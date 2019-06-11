@@ -1,7 +1,7 @@
 package com.help.service.Impl;
 
 import com.help.dao.ExpressDao;
-import com.help.entity.Express;
+import com.help.entity.*;
 import com.help.service.ExpressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,4 +34,10 @@ public class ExpressServiceImpl implements ExpressService {
     public int deleteById(int id) {
         return expressDao.deleteById(id);
     }
+
+    @Override
+    public List<Express> selectUngot(){return expressDao.selectUngot();}
+
+    @Override
+    public List<Task> selectFromTask(){return expressDao.selectFromTask();}
 }

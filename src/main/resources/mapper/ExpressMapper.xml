@@ -19,4 +19,12 @@
     <delete id="deleteById">
         delete from express where express_id = #{id}
     </delete>
+
+    <select id="selectUngot" resultType="express">
+        SELECT * from express where express_id in (select type_id FROM task where status = 0 )
+    </select>
+
+    <select id="selectFromTask" resultType="task">
+        SELECT * from task where status = 0 and type='express'
+    </select>
 </mapper> 

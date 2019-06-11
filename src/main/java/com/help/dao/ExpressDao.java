@@ -1,6 +1,6 @@
 package com.help.dao;
 
-import com.help.entity.Express;
+import com.help.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +13,6 @@ public interface ExpressDao {
     List<Express> selectAll();
     Express selectById(int id);
     int deleteById(int id);
+    List<Express> selectUngot();
+    List<Task> selectFromTask();
 }
